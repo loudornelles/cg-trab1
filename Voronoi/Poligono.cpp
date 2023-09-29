@@ -19,9 +19,39 @@ Poligono::Poligono()
 
 // std::map<std::int8_t, int> neighborDictionary;
 
-bool Poligono::pontoEstaDentro(Ponto p)
+bool Poligono::domina(Ponto a, Ponto b)
 {
-    return E.pontoEstaDentro(p);
+    if ((a.x >= b.x) && (a.y >= b.y))
+        return true;
+    return false;
+}
+
+bool Poligono::estaDentro(Ponto p)
+{
+    if (E.pontoEstaDentro(p))
+    {
+        return estaDentroConcavo(p);
+    }
+}
+
+bool Poligono::estaDentroConcavo(Ponto ponto)
+{
+    // pego (0, p.y) e p em si e vejo quantas intersecções com as arestas do polígono existem.
+    int contadorIntersecoes = 0;
+    Ponto Esq;
+    Ponto Dir(-1, 0);
+    Esq = ponto + Dir * (1000);
+
+    for (int i = 0; i < Vertices.size(); i++)
+    {
+        Ponto A = Vertices[i];
+        Ponto B = Vertices[(i + 1) % Vertices.size()];
+        if (HaInterseccao(Esq, ponto, A, B))
+        {
+            contadorIntersecoes++;
+        }
+    }
+    return contadorIntersecoes % 2 != 0;
 }
 
 void Poligono::insereVertice(Ponto p)

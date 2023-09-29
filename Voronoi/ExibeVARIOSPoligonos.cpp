@@ -286,7 +286,7 @@ void display(void)
         for (int i = 0; i < Voro.getNPoligonos(); i++)
         {
             P = Voro.getPoligono(i);
-            if (P.pontoEstaDentro(PontoClicado))
+            if (P.estaDentro(PontoClicado))
             {
                 cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
             };

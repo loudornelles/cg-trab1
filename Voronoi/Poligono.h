@@ -43,7 +43,9 @@ public:
     unsigned long getNVertices();
     void envelopa();
     void desenhaEnvelope();
-    bool pontoEstaDentro(Ponto p);
+    bool domina(Ponto a, Ponto b);
+    bool estaDentro(Ponto p);
+    bool estaDentroConcavo(Ponto p);
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();

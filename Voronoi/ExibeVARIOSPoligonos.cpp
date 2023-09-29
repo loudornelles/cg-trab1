@@ -283,6 +283,14 @@ void display(void)
         DesenhaPonto(PontoClicado, 3);
 
         glColor3f(1, 0, 0); // R, G, B  [0..1]
+        for (int i = 0; i < Voro.getNPoligonos(); i++)
+        {
+            P = Voro.getPoligono(i);
+            if (P.pontoEstaDentro(PontoClicado))
+            {
+                cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+            };
+        }
     }
 
     // Mapa.desenhaVertices();

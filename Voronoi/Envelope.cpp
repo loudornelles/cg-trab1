@@ -64,6 +64,7 @@ void Envelope::AtualizaEnvelope()
 bool Envelope::pontoEstaDentro(Ponto P)
 // Verifica se um ponto esta dentro do envelope
 {
+    // cout << "Testando ponto \n";
     if (P.x < Min.x)
         return false;
     if (P.x > Max.x)
@@ -72,7 +73,6 @@ bool Envelope::pontoEstaDentro(Ponto P)
         return false;
     if (P.y > Max.y)
         return false;
-
     return true;
 }
 void Envelope::imprime()

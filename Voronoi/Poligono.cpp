@@ -19,6 +19,11 @@ Poligono::Poligono()
 
 // std::map<std::int8_t, int> neighborDictionary;
 
+bool Poligono::pontoEstaDentro(Ponto p)
+{
+    return E.pontoEstaDentro(p);
+}
+
 void Poligono::insereVertice(Ponto p)
 {
     Vertices.push_back(p);

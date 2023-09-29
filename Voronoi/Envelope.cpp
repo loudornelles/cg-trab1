@@ -6,6 +6,9 @@
 //  Copyright © 2022 Márcio Sarroglia Pinho. All rights reserved.
 //
 
+#include <cstdlib> // Para a função rand()
+#include <ctime>   // Para a função time()
+
 #include "Envelope.h"
 
 Envelope::Envelope()
@@ -80,7 +83,14 @@ void Envelope::imprime()
 void Envelope::Desenha()
 // Desenha o envelope
 {
-    glColor3f(1.0f, 1.0f, 1.0f);
+    // Gere cores aleatórias para R, G e B entre 0.0 e 1.0
+    float red = static_cast<float>(rand()) / RAND_MAX;
+    float green = static_cast<float>(rand()) / RAND_MAX;
+    float blue = static_cast<float>(rand()) / RAND_MAX;
+
+    // Configure a cor de desenho com as cores geradas aleatoriamente
+    glColor3f(red, green, blue);
+    // glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_LINE_LOOP);    // Desenha um poligono
     glVertex2d(Min.x, Min.y); // Vertice 1
     glVertex2d(Min.x, Max.y); // Vertice 2

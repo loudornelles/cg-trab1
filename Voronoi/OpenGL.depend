@@ -238,7 +238,9 @@
 	<glut.h>
 	"Ponto.h"
 
-1695997086 source:c:\users\louis\documents\github\cg-trab1\voronoi\envelope.cpp
+1695997565 source:c:\users\louis\documents\github\cg-trab1\voronoi\envelope.cpp
+	<cstdlib>
+	<ctime>
 	"Envelope.h"
 
 1695238135 source:c:\users\louis\documents\github\cg-trab1\voronoi\exibevariospoligonos.cpp

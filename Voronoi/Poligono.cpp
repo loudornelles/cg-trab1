@@ -55,9 +55,9 @@ void Poligono::setVizinho(int edgeIndex, int neighborIndex)
     if (edgeIndex >= 0)
     {
         // Set the neighbor index for the specified edge
-        cout << "tamanho antes de inserir " << NeighborDictionary.size() << endl;
+        // cout << "tamanho antes de inserir " << NeighborDictionary.size() << endl;
         NeighborDictionary[edgeIndex] = neighborIndex;
-        cout << "inserindo {" << edgeIndex << ": " << neighborIndex << "}\n";
+        // cout << "inserindo {" << edgeIndex << ": " << neighborIndex << "}\n";
         int elementoInserido = NeighborDictionary[edgeIndex];
     }
     else
@@ -65,7 +65,7 @@ void Poligono::setVizinho(int edgeIndex, int neighborIndex)
         // Handle the case when edgeIndex is out of bounds (e.g., display an error message)
         cout << "Invalid edge index: " << edgeIndex << endl;
     }
-    cout << "tamanho depois do processo: " << NeighborDictionary.size() << endl;
+    // cout << "tamanho depois do processo: " << NeighborDictionary.size() << endl;
     for (int num : NeighborDictionary)
     {
         std::cout << num << " ";
@@ -88,6 +88,7 @@ void Poligono::desenhaPoligono()
     for (int i = 0; i < Vertices.size(); i++)
         glVertex3f(Vertices[i].x, Vertices[i].y, Vertices[i].z);
     glEnd();
+    E.Desenha();
 }
 void Poligono::desenhaVertices()
 {
@@ -104,6 +105,23 @@ void Poligono::imprime()
 unsigned long Poligono::getNVertices()
 {
     return Vertices.size();
+}
+
+void Poligono::envelopa()
+{
+    Ponto Max = Vertices[0];
+    Ponto Min = Vertices[0];
+
+    for (int i = 0; i < Vertices.size(); i++)
+    {
+        Min = ObtemMinimo(Vertices[i], Min);
+        Max = ObtemMaximo(Vertices[i], Max);
+    }
+
+    E.GeraEnvelope(Min, Max);
+    std::cout << " gerou envelope " << std::endl;
+    E.imprime();
+    E.Desenha();
 }
 
 void Poligono::obtemLimites(Ponto &Min, Ponto &Max)
@@ -146,7 +164,9 @@ void Poligono::LePoligono(const char *nome)
         // nLinha++;
         insereVertice(Ponto(x, y));
     }
-    cout << "Poligono lido com sucesso!" << endl;
+    // cout << "Envelopando!" << endl;
+    // envelopa();
+    // cout << "Poligono lido com sucesso!" << endl;
     input.close();
 }
 

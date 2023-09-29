@@ -27,18 +27,22 @@ using namespace std;
 
 #include "Ponto.h"
 #include <vector>
+#include "Envelope.h"
 
 class Poligono
 {
     vector<Ponto> Vertices;
     Ponto Min, Max;
     vector<int> NeighborDictionary;
+    Envelope E;
 
 public:
     // vector<Ponto, Ponto> Arestas;
     Poligono();
     Ponto getVertice(int);
     unsigned long getNVertices();
+    void envelopa();
+    void desenhaEnvelope();
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();

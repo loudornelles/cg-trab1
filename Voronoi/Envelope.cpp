@@ -80,6 +80,7 @@ void Envelope::imprime()
 void Envelope::Desenha()
 // Desenha o envelope
 {
+    glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_LINE_LOOP);    // Desenha um poligono
     glVertex2d(Min.x, Min.y); // Vertice 1
     glVertex2d(Min.x, Max.y); // Vertice 2

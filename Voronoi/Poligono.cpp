@@ -30,7 +30,7 @@ bool Poligono::estaDentro(Ponto p)
 {
     if (E.pontoEstaDentro(p))
     {
-        return estaDentroConcavo(p);
+        return estaDentroConvexo(p);
     }
 }
 
@@ -52,6 +52,29 @@ bool Poligono::estaDentroConcavo(Ponto ponto)
         }
     }
     return contadorIntersecoes % 2 != 0;
+}
+
+bool Poligono::estaDentroConvexo(Ponto ponto)
+{
+    Ponto V1;
+    Ponto V2;
+    Ponto resultado;
+
+    for (int i = 0; i < Vertices.size(); i++)
+    {
+        Ponto A = Vertices[i];
+        Ponto B = Vertices[(i + 1) % Vertices.size()];
+        V1 = ponto - A; // ponto
+        V2 = B - A;     // aresta
+
+        ProdVetorial(V1, V2, resultado);
+
+        if (resultado.z < 0)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 void Poligono::insereVertice(Ponto p)

@@ -46,6 +46,7 @@ public:
     bool domina(Ponto a, Ponto b);
     bool estaDentro(Ponto p);
     bool estaDentroConcavo(Ponto p);
+    bool estaDentroConvexo(Ponto ponto);
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();

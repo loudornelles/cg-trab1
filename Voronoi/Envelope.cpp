@@ -48,11 +48,6 @@ void Envelope::GeraEnvelope(Ponto P1, Ponto P2)
 
     Meio = (Max + Min) * 0.5;        // Calcula o ponto medio do envelope
     MeiaLargura = (Max - Min) * 0.5; // Calcula a meia largura do envelope
-
-    // Min.imprime("Minimo: ", "\n");
-    // Max.imprime("Maximo: ", "\n");
-    // Meio.imprime("Meio: ", "\n");
-    // MeiaLargura.imprime("Meia Largura: ", "\n");
 }
 void Envelope::AtualizaEnvelope()
 // Atualiza o envelope a partir dos pontos Min e Max

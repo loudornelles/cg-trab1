@@ -13,8 +13,6 @@ using namespace std;
 
 #include <list>
 
-// int contaFuncao = 0;
-
 Poligono::Poligono()
 {
 }
@@ -44,21 +42,6 @@ bool Poligono::estaDentro(Ponto p, int metodo)
         return false;
     }
 }
-
-// void Poligono::interfaceEstaDentro(Ponto p, int metodo){
-//     for (int i = 0; i < Voro.getNPoligonos(); i++)
-//             {
-//                 P = Voro.getPoligono(i);
-//                 if (P.estaDentro(PontoClicado, metodo))
-//                 {
-//                     cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
-//                     cout << "Numero de chamadas de funcao: " << getContador() << endl;
-//                     cout << "Vizinhos: " << endl;
-//                     P.mostraVizinhos();
-//                     UltimoPoligono = i;
-//                 };
-//             }
-// }
 
 bool Poligono::estaDentroConcavo(Ponto ponto)
 {
@@ -108,7 +91,6 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
 
 vector<int> Poligono::estaForaVoronoi(Ponto ponto)
 {
-    // ele estava no 5 e fui pro 18, então eu vou testar pra cada aresta do 5 se o ponto está a esquerda desta aresta. Se estiver, retorna o vizinho da aresta.
     {
         Ponto V1;
         Ponto V2;
@@ -118,7 +100,6 @@ vector<int> Poligono::estaForaVoronoi(Ponto ponto)
 
         for (int i = 0; i < Vertices.size(); i++)
         {
-            cout << "Testando aresta " << i << "de vertice" << i << "e " << (i + 1) % Vertices.size() << endl;
             Ponto A = Vertices[i];
             Ponto B = Vertices[(i + 1) % Vertices.size()];
             V1 = ponto - A; // ponto
@@ -140,32 +121,7 @@ vector<int> Poligono::estaForaVoronoi(Ponto ponto)
         }
         return vizinhosPossiveis;
     }
-
-    // Ponto V1;
-    // Ponto V2;
-    // Ponto resultado;
-
-    // for (int i = 0; i < Vertices.size(); i++)
-    // {
-    //     Ponto A = Vertices[i];
-    //     Ponto B = Vertices[(i + 1) % Vertices.size()];
-    //     V1 = ponto - A; // ponto
-    //     V2 = B - A;     // aresta
-    //     ProdVetorial(V1, V2, resultado);
-
-    //     if (resultado.z > 0)
-    //     {
-    //         cout << "Ponto agora passou na aresta " << i << " e está no poligono " << getVizinho(i) << endl;
-    //         return getVizinho(i);
-    //     }
-    // }
-    // return -2;
 }
-
-// int Poligono::contadorDeFuncao()
-// {
-//     return contaFuncao;
-// }
 
 void Poligono::insereVertice(Ponto p)
 {
@@ -327,9 +283,6 @@ void Poligono::LePoligono(const char *nome)
         // nLinha++;
         insereVertice(Ponto(x, y));
     }
-    // cout << "Envelopando!" << endl;
-    // envelopa();
-    // cout << "Poligono lido com sucesso!" << endl;
     input.close();
 }
 
@@ -347,12 +300,4 @@ void Poligono::desenhaAresta(int n)
     int n1 = (n + 1) % Vertices.size();
     glVertex3f(Vertices[n1].x, Vertices[n1].y, Vertices[n1].z);
     glEnd();
-    // Ponto P1, P2;
-    // getAresta(n, P1, P2);
-    // addAresta(P1, P2);
 }
-
-// void Poligono::addAresta(Ponto P1, Ponto P2)
-// {
-//     Arestas.push_back(P1, P2);
-// }

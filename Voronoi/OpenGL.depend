@@ -202,7 +202,7 @@
 	<fstream>
 	"Poligono.h"
 
-1696100387 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
+1696106727 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
 	<iostream>
 	<windows.h>
 	<glut.h>

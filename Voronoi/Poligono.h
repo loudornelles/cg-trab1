@@ -48,7 +48,7 @@ public:
     bool estaDentroConcavo(Ponto p);
     bool estaDentroConvexo(Ponto ponto);
     int contadorDeFuncao();
-    int estaForaVoronoi(Ponto ponto);
+    vector<int> estaForaVoronoi(Ponto ponto);
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();

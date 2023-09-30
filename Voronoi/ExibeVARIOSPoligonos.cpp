@@ -327,7 +327,22 @@ void display(void)
         if (!P.estaDentro(PontoClicado, metodo))
         { // Para cada aresta do ultimoPoligono, testa se o ponto esta dentro do envelope do vizinho
 
-            UltimoPoligono = P.estaForaVoronoi(PontoClicado);
+            vector<int> VizinhosPossiveis = P.estaForaVoronoi(PontoClicado);
+            for (int i = 0; i < VizinhosPossiveis.size(); i++)
+            {
+                P = Voro.getPoligono(VizinhosPossiveis[i]);
+                if (P.estaDentro(PontoClicado, metodo))
+                {
+                    cout << "VIZINHO -----------------------" << endl;
+                    cout << "Ponto esta dentro do Envelope do poligono " << VizinhosPossiveis[i] << endl;
+                    cout << "Numero de chamadas de funcao: " << getContador() << endl;
+                    cout << "Vizinhos: " << endl;
+                    P.mostraVizinhos();
+                    UltimoPoligono = VizinhosPossiveis[i];
+                    break;
+                }
+            }
+
             P = Voro.getPoligono(UltimoPoligono);
             if (P.estaDentro(PontoClicado, metodo))
             {

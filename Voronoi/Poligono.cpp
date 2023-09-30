@@ -106,16 +106,19 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
     return true;
 }
 
-int Poligono::estaForaVoronoi(Ponto ponto)
+vector<int> Poligono::estaForaVoronoi(Ponto ponto)
 {
     // ele estava no 5 e fui pro 18, então eu vou testar pra cada aresta do 5 se o ponto está a esquerda desta aresta. Se estiver, retorna o vizinho da aresta.
     {
         Ponto V1;
         Ponto V2;
         Ponto resultado;
+        // vetor de vizinhos possiveis
+        vector<int> vizinhosPossiveis;
 
         for (int i = 0; i < Vertices.size(); i++)
         {
+            cout << "Testando aresta " << i << "de vertice" << i << "e " << (i + 1) % Vertices.size() << endl;
             Ponto A = Vertices[i];
             Ponto B = Vertices[(i + 1) % Vertices.size()];
             V1 = ponto - A; // ponto
@@ -131,11 +134,11 @@ int Poligono::estaForaVoronoi(Ponto ponto)
 
             if (resultado.z > 0)
             {
-                cout << "Ponto agora passou na aresta " << valorResultante << " e está no poligono " << getVizinho(valorResultante) << endl;
-                return getVizinho(valorResultante);
+                cout << "Ponto agora passou na aresta " << valorResultante << " e talvez esteja no poligono " << getVizinho(valorResultante) << endl;
+                vizinhosPossiveis.push_back(getVizinho(valorResultante));
             }
         }
-        return -2;
+        return vizinhosPossiveis;
     }
 
     // Ponto V1;

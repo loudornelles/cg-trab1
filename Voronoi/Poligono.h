@@ -44,10 +44,11 @@ public:
     void desenhaEnvelope();
     bool domina(Ponto a, Ponto b);
     bool estaDentro(Ponto p, int metodo);
+    void interfaceEstaDentro(Ponto p, int metodo);
     bool estaDentroConcavo(Ponto p);
     bool estaDentroConvexo(Ponto ponto);
     int contadorDeFuncao();
-    bool estaDentroVoronoi(Ponto ponto);
+    int estaForaVoronoi(Ponto ponto);
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();
@@ -55,6 +56,9 @@ public:
     void pintaPoligono();
     void setVizinho(int j, int k);
     void mostraVizinhos();
+    int tamanhoVizinhos();
+    int getVizinho(int i);
+    vector<int> getNeighborDictionary();
     void imprime();
     void atualizaLimites();
     void obtemLimites(Ponto &Min, Ponto &Max);

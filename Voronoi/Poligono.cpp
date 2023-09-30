@@ -38,16 +38,27 @@ bool Poligono::estaDentro(Ponto p, int metodo)
     {
         return estaDentroConcavo(p);
     }
-    else if (metodo == 2)
-    {
-        return estaDentroVoronoi(p);
-    }
     else
     {
         cout << "Metodo invalido. Nao foi possivel verificar se o ponto esta dentro do poligono." << endl;
         return false;
     }
 }
+
+// void Poligono::interfaceEstaDentro(Ponto p, int metodo){
+//     for (int i = 0; i < Voro.getNPoligonos(); i++)
+//             {
+//                 P = Voro.getPoligono(i);
+//                 if (P.estaDentro(PontoClicado, metodo))
+//                 {
+//                     cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+//                     cout << "Numero de chamadas de funcao: " << getContador() << endl;
+//                     cout << "Vizinhos: " << endl;
+//                     P.mostraVizinhos();
+//                     UltimoPoligono = i;
+//                 };
+//             }
+// }
 
 bool Poligono::estaDentroConcavo(Ponto ponto)
 {
@@ -95,8 +106,57 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
     return true;
 }
 
-bool Poligono::estaDentroVoronoi(Ponto ponto)
+int Poligono::estaForaVoronoi(Ponto ponto)
 {
+    // ele estava no 5 e fui pro 18, então eu vou testar pra cada aresta do 5 se o ponto está a esquerda desta aresta. Se estiver, retorna o vizinho da aresta.
+    {
+        Ponto V1;
+        Ponto V2;
+        Ponto resultado;
+
+        for (int i = 0; i < Vertices.size(); i++)
+        {
+            Ponto A = Vertices[i];
+            Ponto B = Vertices[(i + 1) % Vertices.size()];
+            V1 = ponto - A; // ponto
+            V2 = B - A;     // aresta
+
+            ProdVetorial(V1, V2, resultado);
+
+            int valorResultante = i - 1;
+            if (valorResultante < 0)
+            {
+                valorResultante = Vertices.size() - 1;
+            }
+
+            if (resultado.z > 0)
+            {
+                cout << "Ponto agora passou na aresta " << valorResultante << " e está no poligono " << getVizinho(valorResultante) << endl;
+                return getVizinho(valorResultante);
+            }
+        }
+        return -2;
+    }
+
+    // Ponto V1;
+    // Ponto V2;
+    // Ponto resultado;
+
+    // for (int i = 0; i < Vertices.size(); i++)
+    // {
+    //     Ponto A = Vertices[i];
+    //     Ponto B = Vertices[(i + 1) % Vertices.size()];
+    //     V1 = ponto - A; // ponto
+    //     V2 = B - A;     // aresta
+    //     ProdVetorial(V1, V2, resultado);
+
+    //     if (resultado.z > 0)
+    //     {
+    //         cout << "Ponto agora passou na aresta " << i << " e está no poligono " << getVizinho(i) << endl;
+    //         return getVizinho(i);
+    //     }
+    // }
+    // return -2;
 }
 
 // int Poligono::contadorDeFuncao()
@@ -165,6 +225,21 @@ void Poligono::mostraVizinhos()
     {
         cout << i << ": " << NeighborDictionary[i] << endl;
     }
+}
+
+int Poligono::tamanhoVizinhos()
+{
+    return NeighborDictionary.size();
+}
+
+int Poligono::getVizinho(int i)
+{
+    return NeighborDictionary[i];
+}
+
+vector<int> Poligono::getNeighborDictionary()
+{
+    return NeighborDictionary;
 }
 
 void Poligono::desenhaPoligono()

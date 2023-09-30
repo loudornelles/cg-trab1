@@ -291,21 +291,85 @@ void display(void)
 
         resetContador(); // zera o contador de funcoes
 
+        // se o mouse passa por cima de uma das arestas do ultimopoligono, ele testa o vizinho da aresta
+
+        // if (!P.estaDentro(PontoClicado, metodo))
+        // {
+        //     UltimoPoligono = P.estaForaVoronoi(PontoClicado);
+
+        // }
+
+        // if (!P.estaDentro(PontoClicado, metodo))
+        // {
+        //     for (int i = 0; i < P.getNVertices(); i++)
+        //     {
+        //         Ponto P1, P2;
+        //         P.getAresta(i, P1, P2);
+        //         if (HaInterseccao(PontoClicado, Esq, P1, P2))
+        //         {
+        //             int vizinho = P.getVizinho(i);
+        //             if (vizinho != -1)
+        //             {
+        //                 P = Voro.getPoligono(vizinho);
+        //                 if (P.estaDentro(PontoClicado, metodo))
+        //                 {
+        //                     cout << "Ponto esta dentro do Envelope do poligono " << vizinho << endl;
+        //                     cout << "Numero de chamadas de funcao: " << getContador() << endl;
+        //                     cout << "Vizinhos: " << endl;
+        //                     P.mostraVizinhos();
+        //                     UltimoPoligono = vizinho;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
         if (!P.estaDentro(PontoClicado, metodo))
-        {
-            for (int i = 0; i < Voro.getNPoligonos(); i++)
+        { // Para cada aresta do ultimoPoligono, testa se o ponto esta dentro do envelope do vizinho
+
+            UltimoPoligono = P.estaForaVoronoi(PontoClicado);
+            P = Voro.getPoligono(UltimoPoligono);
+            if (P.estaDentro(PontoClicado, metodo))
             {
-                P = Voro.getPoligono(i);
-                if (P.estaDentro(PontoClicado, metodo))
+                cout << "VORONOI -----------------------" << endl;
+                cout << "Ponto esta dentro do Envelope do poligono " << UltimoPoligono << endl;
+                cout << "Numero de chamadas de funcao: " << getContador() << endl;
+                cout << "Vizinhos: " << endl;
+                P.mostraVizinhos();
+            }
+            else
+            {
+                cout << "AFF -----------------------" << endl;
+                for (int i = 0; i < Voro.getNPoligonos(); i++)
                 {
-                    cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
-                    cout << "Numero de chamadas de funcao: " << getContador() << endl;
-                    cout << "Vizinhos: " << endl;
-                    P.mostraVizinhos();
-                    UltimoPoligono = i;
-                };
+                    P = Voro.getPoligono(i);
+                    if (P.estaDentro(PontoClicado, metodo))
+                    {
+                        cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+                        cout << "Numero de chamadas de funcao: " << getContador() << endl;
+                        cout << "Vizinhos: " << endl;
+                        P.mostraVizinhos();
+                        UltimoPoligono = i;
+                    };
+                }
             }
         }
+
+        // if (!P.estaDentro(PontoClicado, metodo))
+        // {
+        //     for (int i = 0; i < Voro.getNPoligonos(); i++)
+        //     {
+        //         P = Voro.getPoligono(i);
+        //         if (P.estaDentro(PontoClicado, metodo))
+        //         {
+        //             cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+        //             cout << "Numero de chamadas de funcao: " << getContador() << endl;
+        //             cout << "Vizinhos: " << endl;
+        //             P.mostraVizinhos();
+        //             UltimoPoligono = i;
+        //         };
+        //     }
+        // }
     }
 
     // Mapa.desenhaVertices();

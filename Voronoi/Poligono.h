@@ -43,7 +43,7 @@ public:
     void envelopa();
     void desenhaEnvelope();
     bool domina(Ponto a, Ponto b);
-    bool estaDentro(Ponto p);
+    bool estaDentro(Ponto p, int metodo);
     bool estaDentroConcavo(Ponto p);
     bool estaDentroConvexo(Ponto ponto);
     int contadorDeFuncao();

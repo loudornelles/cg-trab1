@@ -286,15 +286,20 @@ void display(void)
 
         glColor3f(1, 0, 0); // R, G, B  [0..1]
         P = Voro.getPoligono(UltimoPoligono);
-        if (!P.estaDentro(PontoClicado))
+
+        int metodo = 0; // metodo a ser usado no teste de inclusao
+
+        resetContador(); // zera o contador de funcoes
+
+        if (!P.estaDentro(PontoClicado, metodo))
         {
             for (int i = 0; i < Voro.getNPoligonos(); i++)
             {
                 P = Voro.getPoligono(i);
-                if (P.estaDentro(PontoClicado))
+                if (P.estaDentro(PontoClicado, metodo))
                 {
                     cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
-                    cout << "Numero de chamadas de funcao: " << P.contadorDeFuncao() << endl;
+                    cout << "Numero de chamadas de funcao: " << getContador() << endl;
                     cout << "Vizinhos: " << endl;
                     P.mostraVizinhos();
                     UltimoPoligono = i;

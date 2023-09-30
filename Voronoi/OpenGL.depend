@@ -202,7 +202,7 @@
 	<fstream>
 	"Poligono.h"
 
-1696061045 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
+1696096495 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -226,7 +226,7 @@
 
 1298986600 c:\users\louis\documents\github\cg-trab1\voronoi\gl\freeglut_ext.h
 
-1693318204 c:\users\louis\documents\github\cg-trab1\voronoi\ponto.h
+1696096214 c:\users\louis\documents\github\cg-trab1\voronoi\ponto.h
 	<iostream>
 	<cmath>
 
@@ -243,7 +243,7 @@
 	<ctime>
 	"Envelope.h"
 
-1696061118 source:c:\users\louis\documents\github\cg-trab1\voronoi\exibevariospoligonos.cpp
+1696096076 source:c:\users\louis\documents\github\cg-trab1\voronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -279,13 +279,13 @@
 1648676928 source:c:\users\louis\documents\github\cg-trab1\voronoi\listadecoresrgb.cpp
 	"ListaDeCoresRGB.h"
 
-1649772860 source:c:\users\louis\documents\github\cg-trab1\voronoi\ponto.cpp
+1696096387 source:c:\users\louis\documents\github\cg-trab1\voronoi\ponto.cpp
 	"Ponto.h"
 
 1648676928 source:c:\users\louis\documents\github\cg-trab1\voronoi\temporizador.cpp
 	"Temporizador.h"
 
-1696090807 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
+1696096480 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
 	<iostream>
 	<fstream>
 	"Poligono.h"

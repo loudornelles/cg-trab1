@@ -13,6 +13,8 @@ using namespace std;
 
 #include <list>
 
+int contaFuncao = 0;
+
 Poligono::Poligono()
 {
 }
@@ -30,7 +32,7 @@ bool Poligono::estaDentro(Ponto p)
 {
     if (E.pontoEstaDentro(p))
     {
-        return estaDentroConvexo(p);
+        return estaDentroConcavo(p);
     }
 }
 
@@ -41,11 +43,13 @@ bool Poligono::estaDentroConcavo(Ponto ponto)
     Ponto Esq;
     Ponto Dir(-1, 0);
     Esq = ponto + Dir * (1000);
+    contaFuncao = 0;
 
     for (int i = 0; i < Vertices.size(); i++)
     {
         Ponto A = Vertices[i];
         Ponto B = Vertices[(i + 1) % Vertices.size()];
+        contaFuncao++;
         if (HaInterseccao(Esq, ponto, A, B))
         {
             contadorIntersecoes++;
@@ -59,6 +63,7 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
     Ponto V1;
     Ponto V2;
     Ponto resultado;
+    contaFuncao = 0;
 
     for (int i = 0; i < Vertices.size(); i++)
     {
@@ -66,7 +71,7 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
         Ponto B = Vertices[(i + 1) % Vertices.size()];
         V1 = ponto - A; // ponto
         V2 = B - A;     // aresta
-
+        contaFuncao++;
         ProdVetorial(V1, V2, resultado);
 
         if (resultado.z < 0)
@@ -75,6 +80,15 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
         }
     }
     return true;
+}
+
+bool Poligono::estaDentroVoronoi(Ponto ponto)
+{
+}
+
+int Poligono::contadorDeFuncao()
+{
+    return contaFuncao;
 }
 
 void Poligono::insereVertice(Ponto p)

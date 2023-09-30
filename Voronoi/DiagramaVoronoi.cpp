@@ -35,9 +35,7 @@ Poligono Voronoi::LeUmPoligono()
         }
         P.insereVertice(Ponto(x, y)); // Insere o ponto no poligono
     }
-    cout << "Envelopando!" << endl;
-
-    P.envelopa(); // Calcula o envelope do poligono
+    P.envelopa(); // Envelopa o poligono
     cout << "Poligono lido com sucesso!" << endl;
     return P;
 }

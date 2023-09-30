@@ -37,7 +37,6 @@ class Poligono
     Envelope E;
 
 public:
-    // vector<Ponto, Ponto> Arestas;
     Poligono();
     Ponto getVertice(int);
     unsigned long getNVertices();
@@ -47,6 +46,8 @@ public:
     bool estaDentro(Ponto p);
     bool estaDentroConcavo(Ponto p);
     bool estaDentroConvexo(Ponto ponto);
+    int contadorDeFuncao();
+    bool estaDentroVoronoi(Ponto ponto);
     void insereVertice(Ponto);
     void insereVertice(Ponto p, int pos);
     void desenhaPoligono();
@@ -59,7 +60,6 @@ public:
     void obtemLimites(Ponto &Min, Ponto &Max);
     void LePoligono(const char *nome);
     void desenhaAresta(int n);
-    // void addAresta(int n);
     void getAresta(int i, Ponto &P1, Ponto &P2);
 };
 

@@ -294,6 +294,9 @@ void display(void)
                 if (P.estaDentro(PontoClicado))
                 {
                     cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+                    cout << "Numero de chamadas de funcao: " << P.contadorDeFuncao() << endl;
+                    cout << "Vizinhos: " << endl;
+                    P.mostraVizinhos();
                     UltimoPoligono = i;
                 };
             }
@@ -398,6 +401,26 @@ void Mouse(int button, int state, int x, int y)
     FoiClicado = true;
 }
 
+void Mouse2(int x, int y)
+{
+    GLint viewport[4];
+    GLdouble modelview[16], projection[16];
+    GLfloat wx = x, wy, wz;
+    GLdouble ox = 0.0, oy = 0.0, oz = 0.0;
+
+    glGetIntegerv(GL_VIEWPORT, viewport);
+    y = viewport[3] - y;
+    wy = y;
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+    glGetDoublev(GL_PROJECTION_MATRIX, projection);
+    glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &wz);
+    gluUnProject(wx, wy, wz, modelview, projection, viewport, &ox, &oy, &oz);
+
+    PontoClicado = Ponto(ox, oy, oz);
+    // PontoClicado.imprime("- Ponto no universo: ", "\n");
+    FoiClicado = true;
+}
+
 // **********************************************************************
 //  void main ( int argc, char** argv )
 //
@@ -452,7 +475,8 @@ int main(int argc, char **argv)
     // pressionar uma tecla especial
     glutSpecialFunc(arrow_keys);
 
-    glutMouseFunc(Mouse);
+    // glutMouseFunc(Mouse);
+    glutMotionFunc(Mouse2);
 
     // inicia o tratamento dos eventos
     glutMainLoop();

@@ -194,7 +194,7 @@
 	"Poligono.h"
 	"Temporizador.h"
 
-1695996943 source:c:\users\louis\documents\github\cg-trab1\voronoi\diagramavoronoi.cpp
+1696060354 source:c:\users\louis\documents\github\cg-trab1\voronoi\diagramavoronoi.cpp
 	"DiagramaVoronoi.h"
 
 1695237582 c:\users\louis\documents\github\cg-trab1\voronoi\diagramavoronoi.h
@@ -202,7 +202,7 @@
 	<fstream>
 	"Poligono.h"
 
-1696007973 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
+1696061045 c:\users\louis\documents\github\cg-trab1\voronoi\poligono.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -243,7 +243,7 @@
 	<ctime>
 	"Envelope.h"
 
-1696007724 source:c:\users\louis\documents\github\cg-trab1\voronoi\exibevariospoligonos.cpp
+1696061118 source:c:\users\louis\documents\github\cg-trab1\voronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -285,7 +285,7 @@
 1648676928 source:c:\users\louis\documents\github\cg-trab1\voronoi\temporizador.cpp
 	"Temporizador.h"
 
-1696011628 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
+1696090807 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
 	<iostream>
 	<fstream>
 	"Poligono.h"

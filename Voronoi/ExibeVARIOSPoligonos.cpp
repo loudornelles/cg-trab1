@@ -53,6 +53,7 @@ int *CoresDosPoligonos;
 
 // Limites logicos da area de desenho
 Ponto Min, Max, PontoClicado;
+int UltimoPoligono;
 
 bool desenha = false;
 bool FoiClicado = false;
@@ -256,6 +257,7 @@ void display(void)
     glLineWidth(2);
 
     Poligono P;
+
     for (int i = 0; i < Voro.getNPoligonos(); i++)
     {
         defineCor(CoresDosPoligonos[i]);
@@ -283,13 +285,18 @@ void display(void)
         DesenhaPonto(PontoClicado, 3);
 
         glColor3f(1, 0, 0); // R, G, B  [0..1]
-        for (int i = 0; i < Voro.getNPoligonos(); i++)
+        P = Voro.getPoligono(UltimoPoligono);
+        if (!P.estaDentro(PontoClicado))
         {
-            P = Voro.getPoligono(i);
-            if (P.estaDentro(PontoClicado))
+            for (int i = 0; i < Voro.getNPoligonos(); i++)
             {
-                cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
-            };
+                P = Voro.getPoligono(i);
+                if (P.estaDentro(PontoClicado))
+                {
+                    cout << "Ponto esta dentro do Envelope do poligono " << i << endl;
+                    UltimoPoligono = i;
+                };
+            }
         }
     }
 

@@ -167,7 +167,6 @@ double ProdEscalar(Ponto v1, Ponto v2)
 // **********************************************************************
 void ProdVetorial(Ponto v1, Ponto v2, Ponto &vresult)
 {
-    // contaFuncao++;
     incrementaContador();
     vresult.x = v1.y * v2.z - (v1.z * v2.y);
     vresult.y = v1.z * v2.x - (v1.x * v2.z);
@@ -220,7 +219,6 @@ int intersec2d(Ponto k, Ponto l, Ponto m, Ponto n, double &s, double &t)
 // **********************************************************************
 bool HaInterseccao(Ponto k, Ponto l, Ponto m, Ponto n)
 {
-    // contaFuncao++;
     incrementaContador();
     int ret;
     double s, t;

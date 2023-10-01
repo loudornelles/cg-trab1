@@ -45,18 +45,15 @@ bool Poligono::estaDentro(Ponto p, int metodo)
 
 bool Poligono::estaDentroConcavo(Ponto ponto)
 {
-    // pego (0, p.y) e p em si e vejo quantas intersecções com as arestas do polígono existem.
     int contadorIntersecoes = 0;
     Ponto Esq;
     Ponto Dir(-1, 0);
     Esq = ponto + Dir * (1000);
-    // contaFuncao = 0;
 
     for (int i = 0; i < Vertices.size(); i++)
     {
         Ponto A = Vertices[i];
         Ponto B = Vertices[(i + 1) % Vertices.size()];
-        // contaFuncao++;
         if (HaInterseccao(Esq, ponto, A, B))
         {
             contadorIntersecoes++;
@@ -70,7 +67,6 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
     Ponto V1;
     Ponto V2;
     Ponto resultado;
-    // contaFuncao = 0;
 
     for (int i = 0; i < Vertices.size(); i++)
     {
@@ -78,7 +74,6 @@ bool Poligono::estaDentroConvexo(Ponto ponto)
         Ponto B = Vertices[(i + 1) % Vertices.size()];
         V1 = ponto - A; // ponto
         V2 = B - A;     // aresta
-        // contaFuncao++;
         ProdVetorial(V1, V2, resultado);
 
         if (resultado.z < 0)

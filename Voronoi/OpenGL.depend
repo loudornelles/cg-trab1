@@ -279,13 +279,13 @@
 1648676928 source:c:\users\louis\documents\github\cg-trab1\voronoi\listadecoresrgb.cpp
 	"ListaDeCoresRGB.h"
 
-1696096387 source:c:\users\louis\documents\github\cg-trab1\voronoi\ponto.cpp
+1696110105 source:c:\users\louis\documents\github\cg-trab1\voronoi\ponto.cpp
 	"Ponto.h"
 
 1648676928 source:c:\users\louis\documents\github\cg-trab1\voronoi\temporizador.cpp
 	"Temporizador.h"
 
-1696107518 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
+1696109897 source:c:\users\louis\documents\github\cg-trab1\voronoi\poligono.cpp
 	<iostream>
 	<fstream>
 	"Poligono.h"
